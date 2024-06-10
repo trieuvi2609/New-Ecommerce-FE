@@ -42,15 +42,29 @@ const AuthForm: React.FunctionComponent<IAuthFormProps> = ({ type }) => {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <FormProvider {...formHandler}>
-        <form onSubmit={formHandler.handleSubmit(onSubmit)} className="space-y-6">
-          <InputComponent id="email" name="email" placeholder="Email address" type="email" />
+        <form
+          onSubmit={formHandler.handleSubmit(onSubmit)}
+          className="space-y-6"
+        >
+          <InputComponent
+            id="email"
+            name="email"
+            placeholder="Email address"
+            type="email"
+          />
 
-          <InputComponent id="password" name="password" placeholder="Password" type="password" />
+          <InputComponent
+            id="password"
+            name="password"
+            placeholder="Password"
+            type="password"
+          />
 
           <div className="flex flex-col items-center">
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
               Sign in
             </button>
           </div>
@@ -59,8 +73,15 @@ const AuthForm: React.FunctionComponent<IAuthFormProps> = ({ type }) => {
 
       <p
         className="mt-10 text-center text-sm text-gray-500 cursor-pointer"
-        onClick={() => router.push("/forgot-password")}>
+        onClick={() => router.push("/forgot-password")}
+      >
         Forgot password
+      </p>
+      <p className="mt-10 text-center text-sm text-gray-500 cursor-pointer">
+        Don't have an account?{" "}
+        <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+          Create a new one.
+        </a>
       </p>
     </div>
   );

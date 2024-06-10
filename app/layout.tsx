@@ -11,6 +11,9 @@ import "./styles.scss";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
 import Footer from "@/components/Footer/Footer";
+<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+import wrapper from "@/redux/store"
+import Spinner from "@/components/common/Spinner";
 
 const inter = Inter({ subsets: ["latin"] });
 

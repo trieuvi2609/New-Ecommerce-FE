@@ -26,7 +26,7 @@ const ProductItem: React.FunctionComponent<IProductItemProps> = ({
     router.push(`/product/${productId}`);
   };
   const handleAddToCart = () => {
-    
+
   }
 
   return (
@@ -40,6 +40,7 @@ const ProductItem: React.FunctionComponent<IProductItemProps> = ({
           style={{ width: "270px", height: "250px", marginBottom: "10px" }}
           onMouseEnter={() => setShowAddToCart(true)}
           onMouseOut={() => setShowAddToCart(false)}
+          className="rounded-md"
         />
         {showAddToCart && (
           <span
