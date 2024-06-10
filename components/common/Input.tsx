@@ -3,8 +3,8 @@ import { Controller, useFormContext } from "react-hook-form";
 
 interface InputProps {
   id: string;
-  className: string;
   name: string;
+  className?: string;
   placeholder?: string;
   type?: string;
 }

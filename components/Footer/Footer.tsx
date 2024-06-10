@@ -7,7 +7,7 @@ import appstore from "@/public/assets/images/appstore.png";
 import qr from "@/public/assets/images/qr.png";
 import ggplay from "@/public/assets/images/ggplay.png";
 import Link from "next/link";
-import InputComponent from "@/components/common/Input";
+import InputSingle from "@/components/common/InputSingle";
 
 const Footer: React.FunctionComponent = () => {
   return (
@@ -18,7 +18,7 @@ const Footer: React.FunctionComponent = () => {
         <div className="content">
           <span>Get 10% off your first order</span>
           <div className="w-full">
-            <InputComponent
+            <InputSingle
               className="input"
               icon={<Image className="icon-act" src={send} width={24} height={24} alt="email" />}
               placeholder="Enter your email"

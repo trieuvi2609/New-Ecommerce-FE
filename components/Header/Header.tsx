@@ -6,7 +6,7 @@ import { useAppContext } from "@/context";
 import Image from "next/image";
 import { cart, heart, search, user as userIcon } from "@/public/assets/icons";
 import { clsx } from "clsx";
-import InputComponent from "@/components/common/Input";
+import InputSingle from "@/components/common/InputSingle";
 
 interface IHeaderProps {}
 
@@ -17,6 +17,11 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     return clsx({
       underline: window.location.pathname === path,
     });
+  };
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // search here
+    console.log(event.target.value);
   };
 
   return (
@@ -37,9 +42,10 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
           <Link href={"/"}>Contact</Link>
         </div>
         <div className="nav-act">
-          <InputComponent
+          <InputSingle
             icon={<Image className="icon-act" src={search} width={24} height={24} alt="search_prod" />}
             placeholder="What are you looking for?"
+            onChange={onChange}
           />
           <Image className="icon-act" src={heart} width={24} height={24} alt="fav_prod" />
           <Image className="icon-act" src={cart} width={28} height={28} alt="cart" />
