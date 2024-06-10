@@ -25,18 +25,22 @@ const ListProducts: React.FunctionComponent<IListProductsProps> = (props) => {
   };
   return (
     <>
-      <h1>List products</h1>
       <div style={{ display: "flex" }}>
-        {listProducts.map((item) => {
-          return (
-            <ProductItem
-              imageUrl={`http://localhost:8080/${item.imageUrl}`}
-              price={item.price}
-              productName={item.productName}
-              star={item.rating}
-            />
-          );
-        })}
+        <h1>List products</h1>
+        <div>
+          {listProducts.map((item) => {
+            return (
+              <ProductItem
+                imageUrl={`http://localhost:8080/${item.imageUrl}`}
+                price={item.price}
+                productName={item.productName}
+                star={item.rating}
+                oldPrice={item.oldPrice}
+                productId={item.productId}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

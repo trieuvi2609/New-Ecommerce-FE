@@ -5,6 +5,8 @@ export type Product = {
   imageUrl: string;
   rating: number;
   user: User;
+  oldPrice: number;
+  productId: string;
 };
 export type UserShowData = {
   userName: string;
@@ -18,4 +20,12 @@ export interface User {
   userName: string;
   status: string;
   cart: any[];
+}
+
+export enum Caterogies {
+  Technology = "Technology",
+  Fashion = "Fashion",
+  Instrument = "Instrument",
+  Cosmetics = "Cosmetics",
+  Furniture = "Furniture",
 }

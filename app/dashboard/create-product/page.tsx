@@ -6,16 +6,19 @@ import { useRouter } from "next/navigation";
 import { makeRequest } from "@/utils/axios";
 import SimpleDialog from "@/components/common/Dialog";
 import { useState } from "react";
+import { Caterogies } from "@/types/interface";
 
 export interface ICreateProductProps {}
 
 type InputsProduct = {
   productName: string;
   price: number;
+  oldPrice: number;
   rating: number;
   quantityInStock: number;
   imageUrl: string;
   description: string;
+  category: typeof Caterogies
 };
 
 export default function CreateProduct(props: ICreateProductProps) {
@@ -39,16 +42,20 @@ export default function CreateProduct(props: ICreateProductProps) {
       description,
       imageUrl,
       price,
+      oldPrice,
       productName,
       quantityInStock,
       rating,
+      category
     } = data;
     const formData = new FormData();
     formData.append("productName", productName);
     formData.append("price", price.toString());
+    formData.append("oldPrice", oldPrice.toString());
     formData.append("quantityInStock", quantityInStock.toString());
     formData.append("description", description);
     formData.append("rating", rating.toString());
+    formData.append("category", "Technology")
     if (imageUrl && imageUrl.length > 0) {
       formData.append("image", imageUrl[0]); // Only use the first file
     } else {
@@ -105,6 +112,12 @@ export default function CreateProduct(props: ICreateProductProps) {
           {...register("price", { required: true })}
           type="number"
         />
+        <input
+          placeholder="oldPrice"
+          {...register("oldPrice", { required: true })}
+          type="number"
+        />
+
         <input
           placeholder="imageUrl"
           {...register("imageUrl", { required: true })}
