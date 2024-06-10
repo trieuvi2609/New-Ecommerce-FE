@@ -12,6 +12,7 @@ const config: Config = {
         primary: "#ffffff",
         secondary: "#000000",
         highlight: "#DB4444",
+        placeholder: "#FAFAFA",
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1rem" }], // 12px, lineHeight: 16px

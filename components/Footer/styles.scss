@@ -1,0 +1,41 @@
+.footer {
+  @apply flex gap-14 justify-center w-full bg-secondary fixed bottom-0 right-0 text-primary pt-20 pb-[60px] px-[135px];
+
+  .ft-block {
+    @apply min-w-[200px] max-h-[200px];
+
+    .block-main-tt {
+      @apply text-2xl font-bold;
+    }
+
+    .block-sub-tt {
+      @apply text-xl mt-6;
+    }
+
+    .content {
+      @apply text-base flex flex-col gap-4 mt-6;
+    }
+  }
+
+  .exclusive {
+    @apply flex flex-col;
+
+    .input {
+      @apply border border-solid border-primary rounded-sm;
+
+      & ::placeholder {
+        @apply text-placeholder;
+      }
+    }
+  }
+
+  .app {
+    .cnt-img {
+      @apply flex items-center gap-3;
+
+      .download {
+        @apply flex flex-col gap-2;
+      }
+    }
+  }
+}

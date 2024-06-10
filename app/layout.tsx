@@ -1,5 +1,4 @@
 "use client";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./styles.scss";
@@ -11,7 +10,7 @@ import theme from "./theme";
 import "./styles.scss";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
-import wrapper from "@/redux/store"
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,10 +27,9 @@ export default function RootLayout({
             <ThemeProvider theme={theme}>
               <AppWrapper>
                 <div className="root-layout">
-                  <Header></Header>
-                  <div style={{ paddingLeft: "10%", paddingRight: "10%" }}>
-                    {children}
-                  </div>
+                  <Header />
+                  <div style={{ paddingLeft: "10%", paddingRight: "10%" }}>{children}</div>
+                  <Footer />
                 </div>
               </AppWrapper>
             </ThemeProvider>
