@@ -1,8 +1,9 @@
-import AuthForm from "@/app/login/auth-form";
+"use client";
+import * as React from "react";
+import AuthForm from "@/app/(auth)/auth-form/auth-form";
+interface ISignUpProps {}
 
-export interface ILoginProps {}
-
-export default function Login(props: ILoginProps) {
+const SignUp: React.FunctionComponent<ISignUpProps> = (props) => {
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -12,12 +13,12 @@ export default function Login(props: ILoginProps) {
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
           />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
-          </h2>
-          <AuthForm type="login" />
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up</h2>
+          <AuthForm type="signup" />
         </div>
       </div>
     </>
   );
-}
+};
+
+export default SignUp;

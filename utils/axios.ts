@@ -17,6 +17,7 @@ interface RequestPayload {
 interface ApiResponse<T> {
   data: T;
   statusCode: number;
+  message: string;
   // Add other response properties if relevant (e.g., headers, status)
 }
 
@@ -27,6 +28,12 @@ export interface LoginResponse {
   userId: string;
   userName: string;
   // Add other user data if needed
+}
+
+export interface SignUpResponse {
+  message: string;
+  statusCode: number;
+  userId?: string;
 }
 
 export async function makeRequest<T = any>(
@@ -42,7 +49,7 @@ export async function makeRequest<T = any>(
     const token = localStorage.getItem("accessToken") || "";
     const headers: Record<string, string> = {
       Authorization: token ? `Bearer ${token}` : "",
-      ...optionalHeaders
+      ...optionalHeaders,
     };
 
     const config: AxiosRequestConfig = {
@@ -50,7 +57,7 @@ export async function makeRequest<T = any>(
       url,
       params,
       headers,
-      withCredentials: false
+      withCredentials: false,
     };
 
     // Add payload to config for POST/PUT/PATCH requests
@@ -86,12 +93,7 @@ export async function handleRefreshToken(): Promise<string> {
       throw new Error("Missing refresh token");
     }
 
-    const response = await makeRequest<LoginResponse>(
-      "/refreshToken",
-      "post",
-      {},
-      { refreshToken }
-    );
+    const response = await makeRequest<LoginResponse>("/refreshToken", "post", {}, { refreshToken });
 
     // Type guard to ensure response has expected structure
     if ("data" in response && response.data.accessToken) {
@@ -109,18 +111,10 @@ export async function handleRefreshToken(): Promise<string> {
   }
 }
 
-export async function login(
-  email: string,
-  password: string
-): Promise<LoginResponse> {
-  const response = await makeRequest<LoginResponse>(
-    "/login",
-    "post",
-    {},
-    { email, password }
-  );
+export async function login(email: string, password: string): Promise<LoginResponse> {
+  const response = await makeRequest<LoginResponse>("/login", "post", {}, { email, password });
 
-  console.log('response', response)
+  console.log("response", response);
   // Type guard to ensure response has expected structure
   if (
     "data" in response &&
@@ -134,6 +128,16 @@ export async function login(
     setItem("refreshToken", refreshToken);
     return response.data; // Return the response
     // Store tokens and return response
+  } else {
+    throw new Error("Invalid response structure");
+  }
+}
+
+export async function signup(email: string, password: string, userName: string): Promise<SignUpResponse> {
+  const response = await makeRequest<SignUpResponse>("/signup", "put", {}, { email, password, userName });
+
+  if (response) {
+    return response;
   } else {
     throw new Error("Invalid response structure");
   }
