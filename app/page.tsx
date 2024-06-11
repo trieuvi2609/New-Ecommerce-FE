@@ -1,4 +1,3 @@
-"use client"
 import ProductItem from "@/components/ProductItem/ProductItem";
 import ProductCategory from "@/components/ProductList/ProductCategory";
 import counterSlice, { decrement, increment } from "@/redux/features/counterSlice/counterSlice";
@@ -6,10 +5,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Product } from "@/types/interface";
 import * as React from "react";
 
-export interface ILoginProps {}
+export interface IHomeProps {}
 
-export default function Login(props: ILoginProps) {
-  const dispatch = useAppDispatch();
+export default function Home(props: IHomeProps) {
 
   return (
     <div>

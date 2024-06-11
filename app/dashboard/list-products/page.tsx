@@ -15,7 +15,7 @@ const ListProducts: React.FunctionComponent<IListProductsProps> = (props) => {
   }, []);
   const getProductsAdmin = async () => {
     try {
-      const response = await makeRequest("/products", "get");
+      const response = await makeRequest("/admin/products", "get");
       if (response.statusCode === 200) {
         setListProducts(response.data);
       }
