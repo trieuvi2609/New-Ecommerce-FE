@@ -38,7 +38,7 @@ const ProductList: React.FunctionComponent<IProductListProps> = ({ title }) => {
         {isLoading ? (
           <Spinner />
         ) : (
-          <div className="flex flex-row">
+          <div className="grid grid-cols-4">
             {listProducts.map((item: Product) => (
               <ProductItem
                 oldPrice={item.oldPrice}

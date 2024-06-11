@@ -123,7 +123,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
       </div>
 
       <div className="navbar">
-        <div className="logo">Exclusive</div>
+        <Link className="logo" href={"/"}>Exclusive</Link>
         {/* <div className="nav-list">
           <Link href={"/"}>Home</Link>
           <Link href={"/dashboard"}>Dashboard</Link>

@@ -31,7 +31,7 @@ const ProductItem: React.FunctionComponent<IProductItemProps> = ({
 
   return (
     <div
-      className="flex flex-col m-5 cursor-pointer"
+      className="flex flex-col cursor-pointer m-3"
       onClick={() => viewProductDetail(productId)}
     >
       <div className="relative">
