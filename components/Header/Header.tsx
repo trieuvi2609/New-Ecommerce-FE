@@ -193,15 +193,15 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link href="/dashboard" className="text-sm font-semibold leading-6 text-gray-900">
             Dashboard
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          </Link>
+          <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900">
             About
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          </Link>
+          <Link href="company" className="text-sm font-semibold leading-6 text-gray-900">
             Company
-          </a>
+          </Link>
         </PopoverGroup>
         <div className="nav-act">
           <InputSingle
