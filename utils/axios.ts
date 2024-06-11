@@ -30,6 +30,13 @@ export interface LoginResponse {
   // Add other user data if needed
 }
 
+export interface SignUpRequest {
+  email: string;
+  password: string;
+  userName: string;
+  role: string;
+}
+
 export interface SignUpResponse {
   message: string;
   statusCode: number;
@@ -133,8 +140,8 @@ export async function login(email: string, password: string): Promise<LoginRespo
   }
 }
 
-export async function signup(email: string, password: string, userName: string): Promise<SignUpResponse> {
-  const response = await makeRequest<SignUpResponse>("/signup", "put", {}, { email, password, userName });
+export async function signup(payload: SignUpRequest): Promise<SignUpResponse> {
+  const response = await makeRequest<SignUpResponse>("/signup", "put", {}, payload);
 
   if (response) {
     return response;
