@@ -1,7 +1,9 @@
 "use client";
 import InputComponent from "@/components/common/Input";
+import SelectComponent from "@/components/common/Select";
 import { useAppContext } from "@/context";
 import { LoginResponse, SignUpResponse, login, signup } from "@/utils/axios";
+import { RoleOptions } from "@/utils/constant";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -14,6 +16,7 @@ type Inputs = {
   email: string;
   password: string;
   userName?: string;
+  role?: string;
 };
 
 const AuthForm: React.FunctionComponent<IAuthFormProps> = ({ type }) => {
@@ -42,7 +45,14 @@ const AuthForm: React.FunctionComponent<IAuthFormProps> = ({ type }) => {
 
   const handleSignUp: SubmitHandler<Inputs> = async (data) => {
     try {
-      const response: SignUpResponse = await signup(data.email, data.password, data.userName as string);
+      const payload = {
+        email: data.email,
+        password: data.password,
+        userName: data.userName as string,
+        role: data.role as string,
+      };
+
+      const response: SignUpResponse = await signup(payload);
 
       if (response.statusCode === 201) {
         router.push("/login");
@@ -61,6 +71,10 @@ const AuthForm: React.FunctionComponent<IAuthFormProps> = ({ type }) => {
           <InputComponent id="email" name="email" placeholder="Email address" type="email" />
 
           <InputComponent id="password" name="password" placeholder="Password" type="password" />
+
+          {type === "signup" && (
+            <SelectComponent id="role" name="role" placeholder="Please select your role" options={RoleOptions} />
+          )}
 
           <div className="flex flex-col items-center">
             <button
